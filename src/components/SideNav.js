@@ -21,7 +21,7 @@ const SideBar = styled.div`
   height: 90vh;
   justify-content: center;
   align-items: center;
-
+  height: auto;
   p {
     color: white;
     transform: rotate(270deg);
