@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import BodyHeader from './BodyHeader'
 import Dashboard from './Dashboard'
 
-const StyledBody = styled.body`
+const StyledBody = styled.div`
   display: flex;
 `
 

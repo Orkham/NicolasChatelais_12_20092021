@@ -5,6 +5,7 @@ const StyledTable = styled.div`
   img {
     width: 258px;
     margin-top: 77px;
+    height: 263px;
   }
 `
 

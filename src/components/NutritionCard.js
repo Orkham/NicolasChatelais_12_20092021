@@ -32,13 +32,16 @@ const Card = styled.div`
   }
 `
 
-function NutritionCard({ icon }) {
+function NutritionCard({ icon, data, category, unit }) {
   return (
     <Card>
       <img src={icon} alt="" />
       <div>
-        <p id="data">1,930kCal</p>
-        <p id="category">Calories</p>
+        <p id="data">
+          {data}
+          {unit}
+        </p>
+        <p id="category">{category}</p>
       </div>
     </Card>
   )

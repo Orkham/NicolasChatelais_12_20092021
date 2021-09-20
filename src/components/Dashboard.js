@@ -30,6 +30,7 @@ const StyledNutritionBoard = styled.div`
   width: 258px;
   height: 100vh;
   margin-right: 90px;
+  justify-content: space-between;
 `
 
 export default function Dashboard() {
@@ -44,10 +45,15 @@ export default function Dashboard() {
         </StyledLittleBoard>
       </StyledDashboard>
       <StyledNutritionBoard>
-        <NutritionCard icon={img1} />
-        <NutritionCard icon={img2} />
-        <NutritionCard icon={img3} />
-        <NutritionCard icon={img4} />
+        <NutritionCard
+          icon={img1}
+          data="1,930"
+          unit="kCal"
+          category="Calories"
+        />
+        <NutritionCard icon={img2} data="155" unit="g" category="Proteines" />
+        <NutritionCard icon={img3} data="290" unit="g" category="Glucides" />
+        <NutritionCard icon={img4} data="50" unit="g" category="Lipides" />
       </StyledNutritionBoard>
     </StyledContent>
   )
