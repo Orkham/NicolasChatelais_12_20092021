@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import Logo from '../assets/logo.png'
 
-const Header = styled.div`
+const StyledHeader = styled.div`
   background: black;
   display: flex;
   align-items: center;
-  height: 91px;
+  height: 10vh;
   padding-left: 29px;
   nav {
     display: flex;
@@ -25,9 +25,9 @@ const Header = styled.div`
   }
 `
 
-export default function Title() {
+export default function Header() {
   return (
-    <Header>
+    <StyledHeader>
       <img src={Logo} alt="" />
       <nav>
         <a href=".">Accueil</a>
@@ -35,6 +35,6 @@ export default function Title() {
         <a href=".">Réglage</a>
         <a href=".">Communauté</a>
       </nav>
-    </Header>
+    </StyledHeader>
   )
 }
