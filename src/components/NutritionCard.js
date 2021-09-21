@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Card = styled.div`
   background: #fbfbfb;
@@ -45,6 +46,13 @@ function NutritionCard({ icon, data, category, unit }) {
       </div>
     </Card>
   )
+}
+
+Card.propTypes = {
+  icon: PropTypes.string,
+  data: PropTypes.number,
+  category: PropTypes.string,
+  unit: PropTypes.string,
 }
 
 export default NutritionCard
