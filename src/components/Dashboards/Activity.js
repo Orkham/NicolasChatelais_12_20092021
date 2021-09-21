@@ -72,6 +72,15 @@ const data = [
   },
 ]
 
+const renderColorfulLegendText = (value) => {
+  return <span style={{ color: '#74798C', paddingLeft: '10px' }}>{value}</span>
+}
+
+const renderTooltip = (value, label) => {
+  label = value > 150 ? 'kCal' : 'kg'
+  return [label, value]
+}
+
 export default class Example extends PureComponent {
   render() {
     return (
@@ -89,7 +98,13 @@ export default class Example extends PureComponent {
             Activité quotidienne
           </text>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="name" />
+          <XAxis
+            dataKey="name"
+            tickLine={false}
+            fontFamily="Roboto"
+            fontWeight="500"
+            fontSize="14px"
+          />
           <YAxis dataKey="poids" domain={[68, 72]} orientation="right" />
           <YAxis
             dataKey="calories"
@@ -97,7 +112,35 @@ export default class Example extends PureComponent {
             hide={true}
             yAxisId="calories"
           />
-          <Tooltip />
+          <Tooltip
+            offset={50}
+            separator=" "
+            itemStyle={{
+              background: '#E60000',
+              margin: 0,
+              padding: 0,
+              color: '#FFF',
+              fontFamily: 'Roboto',
+              fontWeight: 500,
+              fontSize: '12px',
+              lineHeight: '24px',
+            }}
+            wrapperStyle={{
+              background: '#E60000',
+              margin: 0,
+              padding: 0,
+            }}
+            contentStyle={{
+              background: '#E60000',
+              margin: 0,
+              padding: 10,
+              border: 'none',
+            }}
+            labelStyle={{
+              display: 'none',
+            }}
+            formatter={renderTooltip}
+          />
           <Legend
             verticalAlign="top"
             align="right"
@@ -109,6 +152,7 @@ export default class Example extends PureComponent {
               fontSize: '14px',
             }}
             iconSize="8"
+            formatter={renderColorfulLegendText}
           />
           <Bar
             name="Poids (kg)"
