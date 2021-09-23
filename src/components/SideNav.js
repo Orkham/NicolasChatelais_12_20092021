@@ -19,7 +19,7 @@ const SideBar = styled.div`
   flex-direction: column;
   width: 117px;
   height: 90vh;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: auto;
   p {

@@ -28,7 +28,7 @@ const StyledNutritionBoard = styled.div`
   display: flex;
   flex-direction: column;
   width: 258px;
-  height: 100vh;
+
   margin-right: 90px;
   justify-content: space-between;
 `
