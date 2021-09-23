@@ -1,6 +1,7 @@
 import React from 'react'
 import { PieChart, Pie, ResponsiveContainer, Legend } from 'recharts'
 
+
 const data01 = [
   {
     name: 'Score',
@@ -37,6 +38,17 @@ export default function ScorePieChart() {
         <Pie
           data={data01}
           dataKey="value"
+          isAnimationActive={false}
+          legendType="none"
+          cx="50%"
+          cy="50%"
+          innerRadius={0}
+          outerRadius={70}
+          fill="#fff"
+        />
+        <Pie
+          data={data01}
+          dataKey="value"
           nameKey="name"
           cx="50%"
           cy="50%"
@@ -46,6 +58,35 @@ export default function ScorePieChart() {
           startAngle={90}
           endAngle={90 + (data01[0].value / 100) * 360}
         />
+        <text
+          x={110}
+          y={120}
+          fontFamily={'Roboto'}
+          fontWeight={700}
+          fontSize={'26px'}
+        >
+          {data01[0].value}%
+        </text>
+        <text
+          x={100}
+          y={150}
+          fontFamily={'Roboto'}
+          fontWeight={500}
+          fontSize={'16px'}
+          opacity="0.6"
+        >
+          de votre
+        </text>
+        <text
+          x={100}
+          y={180}
+          fontFamily={'Roboto'}
+          fontWeight={500}
+          fontSize={'16px'}
+          opacity="0.6"
+        >
+          objectif
+        </text>
       </PieChart>
     </ResponsiveContainer>
   )
