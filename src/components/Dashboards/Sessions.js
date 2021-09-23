@@ -6,7 +6,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  YAxis, Area
+  YAxis,
 } from 'recharts'
 
 const data = [
@@ -58,7 +58,7 @@ export default function SessionsChart() {
       <LineChart
         data={data}
         margin={{
-          top: 5,
+          top: 0,
           right: 0,
           left: 0,
           bottom: 5,
@@ -105,7 +105,7 @@ export default function SessionsChart() {
           tickLine={false}
         />
         <YAxis dataKey="pv" domain={['auto', 'auto']} hide></YAxis>
-        <Area type='monotone' dataKey='pv' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
+
         <Tooltip
           separator=" "
           itemStyle={{

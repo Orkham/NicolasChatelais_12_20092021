@@ -1,18 +1,16 @@
 import styled from 'styled-components'
-import img from '../../assets/KPI.png'
+import ScorePieChart from '../Dashboards/KPI'
 
 const StyledTable = styled.div`
-  img {
-    width: 258px;
-    margin-top: 77px;
-    height: 263px;
-  }
+  width: 258px;
+  margin-top: 77px;
+  height: 263px;
 `
 
 export default function KPI() {
   return (
     <StyledTable>
-      <img src={img} alt="" />
+      <ScorePieChart />
     </StyledTable>
   )
 }
