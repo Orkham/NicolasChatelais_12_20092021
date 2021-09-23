@@ -6,52 +6,51 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  YAxis, Area
 } from 'recharts'
 
 const data = [
   {
     name: 'L',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+
+    pv: 30,
   },
   {
     name: 'M',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+
+    pv: 25,
   },
   {
     name: 'M',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+
+    pv: 30,
   },
   {
     name: 'J',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+
+    pv: 25,
   },
   {
     name: 'V',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+
+    pv: 30,
   },
   {
     name: 'S',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+
+    pv: 25,
   },
   {
     name: 'D',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+
+    pv: 30,
   },
 ]
+
+const renderTooltip = (value, label) => {
+  label = 'min'
+  return [label, value]
+}
 
 export default function SessionsChart() {
   return (
@@ -64,7 +63,10 @@ export default function SessionsChart() {
           left: 0,
           bottom: 5,
         }}
-        style={{ background: 'red', borderRadius: '5px' }}
+        style={{
+          background: 'red',
+          borderRadius: '5px',
+        }}
       >
         <text
           x={34}
@@ -72,28 +74,73 @@ export default function SessionsChart() {
           fontFamily={'Roboto'}
           fontWeight={500}
           fontSize={'15px'}
-          width={'147px'}
           fill={'white'}
           opacity={0.5}
         >
-          Durée moyenne des sessions
+          Durée moyenne des
+        </text>
+        <text
+          x={34}
+          y={59}
+          fontFamily={'Roboto'}
+          fontWeight={500}
+          fontSize={'15px'}
+          fill={'white'}
+          opacity={0.5}
+        >
+          sessions
         </text>
         <XAxis
+          fontFamily={'Roboto'}
+          tick={{ fill: 'white', opacity: 0.5 }}
           dataKey="name"
           margin={{
-            top: 20,
+            top: 0,
             right: 0,
             left: 0,
             bottom: 25,
           }}
+          padding={{ left: 12, right: 12 }}
+          axisLine={false}
+          tickLine={false}
         />
-
-        <Tooltip />
-        <Legend />
+        <YAxis dataKey="pv" domain={['auto', 'auto']} hide></YAxis>
+        <Area type='monotone' dataKey='pv' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
+        <Tooltip
+          separator=" "
+          itemStyle={{
+            margin: 0,
+            padding: 10,
+            background: '#FFF',
+            color: '#000',
+            fontFamily: 'Roboto',
+            fontWeight: 500,
+            fontSize: '12px',
+            lineHeight: '24px',
+          }}
+          wrapperStyle={{
+            margin: 0,
+            padding: 0,
+          }}
+          contentStyle={{
+            margin: 0,
+            padding: 10,
+            border: 'none',
+          }}
+          labelStyle={{
+            display: 'none',
+          }}
+          formatter={renderTooltip}
+        />
+        <Legend
+          wrapperStyle={{
+            display: 'none',
+          }}
+        />
         <Line
           type="monotone"
           dataKey="pv"
-          stroke="#8884d8"
+          stroke="#FFFFFF"
           dot={false}
           strokeWidth={2}
         />

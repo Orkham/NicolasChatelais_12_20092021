@@ -105,7 +105,13 @@ export default class Example extends PureComponent {
             fontWeight="500"
             fontSize="14px"
           />
-          <YAxis dataKey="poids" domain={[68, 72]} orientation="right" />
+          <YAxis
+            dataKey="poids"
+            domain={[68, 72]}
+            orientation="right"
+            axisLine={false}
+            tickSize={0}
+          />
           <YAxis
             dataKey="calories"
             domain={[1000, 4000]}
