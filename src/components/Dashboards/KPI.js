@@ -57,6 +57,7 @@ export default function ScorePieChart() {
           fill="#FF0000"
           startAngle={90}
           endAngle={90 + (data01[0].value / 100) * 360}
+          cornerRadius={5}
         />
         <text
           x={110}

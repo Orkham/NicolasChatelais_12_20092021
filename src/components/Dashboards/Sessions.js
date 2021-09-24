@@ -12,37 +12,37 @@ import {
 const data = [
   {
     name: 'L',
-
+    errroY: 2,
     pv: 30,
   },
   {
     name: 'M',
-
+    errroY: 2,
     pv: 25,
   },
   {
     name: 'M',
-
+    errroY: 2,
     pv: 30,
   },
   {
     name: 'J',
-
+    errroY: 2,
     pv: 25,
   },
   {
     name: 'V',
-
+    errroY: 2,
     pv: 30,
   },
   {
     name: 'S',
-
+    errroY: 2,
     pv: 25,
   },
   {
     name: 'D',
-
+    errroY: 2,
     pv: 30,
   },
 ]
