@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import {
   BarChart,
   Bar,
@@ -9,68 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-
-const data = [
-  {
-    name: '1',
-    poids: 69,
-    calories: 2400,
-  },
-  {
-    name: '2',
-    poids: 70,
-    calories: 2398,
-    amt: 2210,
-  },
-  {
-    name: '3',
-    poids: 71,
-    calories: 1800,
-    amt: 2290,
-  },
-  {
-    name: '4',
-    poids: 70,
-    calories: 1908,
-    amt: 2000,
-  },
-  {
-    name: '5',
-    poids: 69,
-    calories: 2800,
-    amt: 2181,
-  },
-  {
-    name: '6',
-    poids: 70,
-    calories: 2800,
-    amt: 2500,
-  },
-  {
-    name: '7',
-    poids: 71,
-    calories: 2300,
-    amt: 2100,
-  },
-  {
-    name: '8',
-    poids: 70,
-    calories: 2300,
-    amt: 2100,
-  },
-  {
-    name: '9',
-    poids: 69,
-    calories: 1300,
-    amt: 2100,
-  },
-  {
-    name: '10',
-    poids: 70,
-    calories: 2300,
-    amt: 2100,
-  },
-]
+import { getUserActivity } from '../../service/api'
 
 const renderColorfulLegendText = (value) => {
   return <span style={{ color: '#74798C', paddingLeft: '10px' }}>{value}</span>
@@ -81,12 +20,20 @@ const renderTooltip = (value, label) => {
   return [label, value]
 }
 
-export default class Example extends PureComponent {
+export default class ActivityGraph extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { data: '' }
+  }
+  async componentDidMount() {
+    this.setState({ data: await getUserActivity(12) })
+  }
+
   render() {
     return (
       <ResponsiveContainer>
         <BarChart
-          data={data}
+          data={this.state.data}
           margin={{
             top: 112.5,
             right: 0,
@@ -99,22 +46,22 @@ export default class Example extends PureComponent {
           </text>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
-            dataKey="name"
+            dataKey="day"
             tickLine={false}
             fontFamily="Roboto"
             fontWeight="500"
             fontSize="14px"
           />
           <YAxis
-            dataKey="poids"
-            domain={[68, 72]}
+            dataKey="kilogram"
+            domain={['dataMin-1', 'dataMax+1']}
             orientation="right"
             axisLine={false}
             tickSize={0}
           />
           <YAxis
             dataKey="calories"
-            domain={[1000, 4000]}
+            domain={['dataMin-50', 'dataMax+50']}
             hide={true}
             yAxisId="calories"
           />
@@ -162,7 +109,7 @@ export default class Example extends PureComponent {
           />
           <Bar
             name="Poids (kg)"
-            dataKey="poids"
+            dataKey="kilogram"
             fill="#282D30"
             barSize={7}
             radius={[5, 5, 0, 0]}

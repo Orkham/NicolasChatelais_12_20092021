@@ -8,6 +8,8 @@ import img1 from '../assets/nutritionIcons/calories-icon.png'
 import img2 from '../assets/nutritionIcons/protein-icon.png'
 import img3 from '../assets/nutritionIcons/carbs-icon.png'
 import img4 from '../assets/nutritionIcons/fat-icon.png'
+import React from 'react'
+import { getKeyDatas } from '../service/api'
 
 const StyledContent = styled.div`
   display: flex;
@@ -33,28 +35,53 @@ const StyledNutritionBoard = styled.div`
   justify-content: space-between;
 `
 
-export default function Dashboard() {
-  return (
-    <StyledContent>
-      <StyledDashboard>
-        <Activity />
-        <StyledLittleBoard>
-          <Sessions />
-          <Radar />
-          <KPI />
-        </StyledLittleBoard>
-      </StyledDashboard>
-      <StyledNutritionBoard>
-        <NutritionCard
-          icon={img1}
-          data="1,930"
-          unit="kCal"
-          category="Calories"
-        />
-        <NutritionCard icon={img2} data="155" unit="g" category="Proteines" />
-        <NutritionCard icon={img3} data="290" unit="g" category="Glucides" />
-        <NutritionCard icon={img4} data="50" unit="g" category="Lipides" />
-      </StyledNutritionBoard>
-    </StyledContent>
-  )
+export default class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { data: '' }
+  }
+  async componentDidMount() {
+    this.setState({ data: await getKeyDatas(12) })
+  }
+
+  render() {
+    return (
+      <StyledContent>
+        <StyledDashboard>
+          <Activity />
+          <StyledLittleBoard>
+            <Sessions />
+            <Radar />
+            <KPI />
+          </StyledLittleBoard>
+        </StyledDashboard>
+        <StyledNutritionBoard>
+          <NutritionCard
+            icon={img1}
+            data={this.state.data.calorieCount}
+            unit="kCal"
+            category="Calories"
+          />
+          <NutritionCard
+            icon={img2}
+            data={this.state.data.proteinCount}
+            unit="g"
+            category="Proteines"
+          />
+          <NutritionCard
+            icon={img3}
+            data={this.state.data.carbohydrateCount}
+            unit="g"
+            category="Glucides"
+          />
+          <NutritionCard
+            icon={img4}
+            data={this.state.data.lipidCount}
+            unit="g"
+            category="Lipides"
+          />
+        </StyledNutritionBoard>
+      </StyledContent>
+    )
+  }
 }

@@ -4,21 +4,15 @@ export async function getUserInformations(id) {
   return data.data
 }
 
-/* async function displayResults() {
-  const result = await getUserInformations(12)
-  console.log(result)
-}
 
-displayResults() */
-
-async function getFirstName(id) {
+export async function getFirstName(id) {
   const data = await getUserInformations(id)
   //console.log(data.userInfos.firstName)
   return data.userInfos.firstName
 }
 getFirstName(12)
 
-async function getKeyDatas(id) {
+export async function getKeyDatas(id) {
   const data = await getUserInformations(id)
   //console.log(data.keyData)
   return data.keyData
@@ -27,37 +21,98 @@ getKeyDatas(12)
 
 /**********************************************/
 
-async function getUserActivity(id) {
+export async function getUserActivity(id) {
   const res = await fetch('http://localhost:3000/user/' + id + '/activity')
   const data = await res.json()
-  //console.log(data.data.sessions)
-  return data.data.sessions
-}
+  const result = data.data.sessions
+  result.sort((a, b) => {
+    let dateA = new Date(a.day)
+    let dateB = new Date(b.day)
+    return dateA.getUTCDay() - dateB.getUTCDay()
+  })
 
-getUserActivity(12)
+  result.map((day) => {
+    const date = new Date(day.day)
+    const dayNumber = date.getUTCDay()
+    switch (dayNumber) {
+      case 0:
+        day.day = 'L'
+        break
+      case 1:
+        day.day = 'M'
+        break
+      case 2:
+        day.day = 'M'
+        break
+      case 3:
+        day.day = 'J'
+        break
+      case 4:
+        day.day = 'V'
+        break
+      case 5:
+        day.day = 'S'
+        break
+      case 6:
+        day.day = 'D'
+        break
+      default:
+        console.log(
+          "Désolé, nous n'avons plus de jour de la semaine en réserve."
+        )
+    }
+
+    return dayNumber
+  })
+
+  return result
+}
 
 /*******************************************/
 
-async function getAverageSessions(id) {
+export async function getAverageSessions(id) {
   const res = await fetch(
     'http://localhost:3000/user/' + id + '/average-sessions'
   )
   const data = await res.json()
   //console.log(data.data.sessions)
-  return data.data
+  return data.data.sessions
 }
-
-getAverageSessions(12)
 
 /*************************************/
 
-async function getPerformance(id) {
+export async function getPerformance(id) {
   const res = await fetch('http://localhost:3000/user/' + id + '/performance')
   const data = await res.json()
-  //console.log(data.data.data)
-  return data.data.data
+  const result = data.data.data
+  result.map((kind) => {
+    switch (kind.kind) {
+      case 1:
+        kind.kind = 'Intensité'
+        break
+      case 2:
+        kind.kind = 'Vitesse'
+        break
+      case 3:
+        kind.kind = 'Force'
+        break
+      case 4:
+        kind.kind = 'Endurance'
+        break
+      case 5:
+        kind.kind = 'Energie'
+        break
+      case 6:
+        kind.kind = 'Cardio'
+        break
+      default:
+        console.log(
+          "Désolé, nous n'avons pas pu trouver de résultat correspondant."
+        )
+    }
+    return kind.kind
+  })
+  return result
 }
-
-getPerformance(12)
 
 /********************************************/

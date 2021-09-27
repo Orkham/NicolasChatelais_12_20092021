@@ -7,79 +7,47 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from 'recharts'
+import { getPerformance } from '../../service/api'
 
-const data = [
-  {
-    subject: 'Intensité',
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: 'Vitesse',
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Force',
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Endurance',
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: 'Energie',
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: 'Cardio',
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-]
-/*
-const renderTick = (dataKey) => {
-  return dataKey
-}*/
+export default class HealthyRadar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { data: '' }
+  }
+  async componentDidMount() {
+    this.setState({ data: await getPerformance(12) })
+  }
 
-export default function HealthyRadar() {
-  return (
-    <ResponsiveContainer width="100%" height="100%">
-      <RadarChart
-        cx="50%"
-        cy="50%"
-        outerRadius="70%"
-        data={data}
-        fill="#FFF"
-        style={{
-          background: 'black',
-          borderRadius: '5px',
-          fontFamily: 'Roboto',
-          fontWeigth: '500',
-          fontSize: '12px',
-        }}
-      >
-        <PolarGrid />
-        <PolarAngleAxis dataKey="subject" />
+  render() {
+    return (
+      <ResponsiveContainer width="100%" height="100%">
+        <RadarChart
+          cx="50%"
+          cy="50%"
+          outerRadius="70%"
+          data={this.state.data}
+          fill="#FFF"
+          style={{
+            background: 'black',
+            borderRadius: '5px',
+            fontFamily: 'Roboto',
+            fontWeigth: '500',
+            fontSize: '12px',
+          }}
+        >
+          <PolarGrid />
+          <PolarAngleAxis dataKey="kind" />
 
-        <PolarRadiusAxis axisLine={false} tick={false} />
-        <Radar
-          name="Mike"
-          dataKey="A"
-          stroke="#FF0101B2"
-          fill="#FF0101B2"
-          fillOpacity={0.6}
-        />
-      </RadarChart>
-    </ResponsiveContainer>
-  )
+          <PolarRadiusAxis axisLine={false} tick={false} />
+          <Radar
+            name="Mike"
+            dataKey="value"
+            stroke="#FF0101B2"
+            fill="#FF0101B2"
+            fillOpacity={0.6}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    )
+  }
 }

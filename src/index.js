@@ -49,7 +49,6 @@ table {
 	border-spacing: 0;
 }
 `
-//getData()
 
 ReactDOM.render(
   <React.StrictMode>

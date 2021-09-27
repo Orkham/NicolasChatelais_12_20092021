@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Example from '../Dashboards/Activity'
+import ActivityGraph from '../Dashboards/Activity'
 
 const TableWrapper = styled.div`
   height: 320px;
@@ -11,7 +11,7 @@ const TableWrapper = styled.div`
 export default function Activity() {
   return (
     <TableWrapper>
-      <Example />
+      <ActivityGraph />
     </TableWrapper>
   )
 }
