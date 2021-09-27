@@ -10,15 +10,21 @@ export async function getFirstName(id) {
   //console.log(data.userInfos.firstName)
   return data.userInfos.firstName
 }
-getFirstName(12)
+
 
 export async function getKeyDatas(id) {
   const data = await getUserInformations(id)
   //console.log(data.keyData)
   return data.keyData
 }
-getKeyDatas(12)
 
+export async function getTodayScore(id) {
+  const score = await getUserInformations(id)
+  //console.log(score)
+  const result = [{ name: 'Score', number: score.todayScore * 100 }]
+  //console.log(result)
+  return result
+}
 /**********************************************/
 
 export async function getUserActivity(id) {
