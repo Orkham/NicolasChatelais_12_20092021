@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import ActivityGraph from '../Dashboards/Activity'
+import { GetId } from '../../service/api'
 
 const TableWrapper = styled.div`
   height: 320px;
@@ -11,7 +12,7 @@ const TableWrapper = styled.div`
 export default function Activity() {
   return (
     <TableWrapper>
-      <ActivityGraph />
+      <ActivityGraph id={GetId()} />
     </TableWrapper>
   )
 }

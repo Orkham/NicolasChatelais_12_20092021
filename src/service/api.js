@@ -1,16 +1,16 @@
+import { useParams } from 'react-router'
+
 export async function getUserInformations(id) {
   const res = await fetch('http://localhost:3000/user/' + id)
   const data = await res.json()
   return data.data
 }
 
-
 export async function getFirstName(id) {
   const data = await getUserInformations(id)
   //console.log(data.userInfos.firstName)
   return data.userInfos.firstName
 }
-
 
 export async function getKeyDatas(id) {
   const data = await getUserInformations(id)
@@ -122,3 +122,7 @@ export async function getPerformance(id) {
 }
 
 /********************************************/
+export function GetId() {
+  let { id } = useParams()
+  return id
+}

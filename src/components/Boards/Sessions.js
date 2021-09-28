@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { GetId } from '../../service/api'
 import SessionsChart from '../Dashboards/Sessions'
 
 const StyledTable = styled.div`
@@ -11,7 +11,7 @@ const StyledTable = styled.div`
 export default function Sessions() {
   return (
     <StyledTable>
-      <SessionsChart />
+      <SessionsChart id={GetId()} />
     </StyledTable>
   )
 }

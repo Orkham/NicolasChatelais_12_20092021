@@ -23,10 +23,10 @@ const renderTooltip = (value, label) => {
 export default class ActivityGraph extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { data: '' }
+    this.state = { data: '', id: this.props.id }
   }
   async componentDidMount() {
-    this.setState({ data: await getUserActivity(12) })
+    this.setState({ data: await getUserActivity(this.state.id) })
   }
 
   render() {

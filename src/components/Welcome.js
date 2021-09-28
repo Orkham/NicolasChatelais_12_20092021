@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styled from 'styled-components'
 import { getFirstName } from '../service/api'
 
@@ -18,10 +19,11 @@ const Title = styled.h1`
 export default class Welcome extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { name: '' }
+    this.state = { name: '', id: this.props.id }
   }
+
   async componentDidMount() {
-    this.setState({ name: await getFirstName(12) })
+    this.setState({ name: await getFirstName(this.state.id) })
   }
   render() {
     return (

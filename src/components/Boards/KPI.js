@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import ScorePieChart from '../Dashboards/KPI'
+import { GetId } from '../../service/api'
 
 const StyledTable = styled.div`
   width: 258px;
@@ -10,7 +11,7 @@ const StyledTable = styled.div`
 export default function KPI() {
   return (
     <StyledTable>
-      <ScorePieChart />
+      <ScorePieChart id={GetId()} />
     </StyledTable>
   )
 }

@@ -3,8 +3,9 @@ import SideNav from './SideNav'
 import styled from 'styled-components'
 import BodyHeader from './BodyHeader'
 import Dashboard from './Dashboard'
+import { GetId } from '../service/api'
 
-const StyledBody = styled.div`
+const StyledBody = styled.section`
   display: flex;
 `
 
@@ -19,8 +20,8 @@ export default function Body() {
     <StyledBody>
       <SideNav />
       <Content>
-        <BodyHeader />
-        <Dashboard />
+        <BodyHeader id={GetId()} />
+        <Dashboard id={GetId()} />
       </Content>
     </StyledBody>
   )

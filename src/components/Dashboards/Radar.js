@@ -12,10 +12,10 @@ import { getPerformance } from '../../service/api'
 export default class HealthyRadar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { data: '' }
+    this.state = { data: '', id: this.props.id }
   }
   async componentDidMount() {
-    this.setState({ data: await getPerformance(12) })
+    this.setState({ data: await getPerformance(this.state.id) })
   }
 
   render() {

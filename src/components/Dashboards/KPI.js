@@ -9,14 +9,13 @@ const renderColorfulLegendText = (value) => {
 export default class ScorePieChart extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { data: [], number: 0, angle: 0 }
+    this.state = { data: [], number: 0, angle: 0, id: this.props.id }
   }
+  
   async componentDidMount() {
-    this.setState({ data: await getTodayScore(12) })
+    this.setState({ data: await getTodayScore(this.state.id) })
     this.setState({ number: this.state.data[0].number })
     this.setState({ angle: 90 + (this.state.number / 100) * 360 })
-    console.log(this.state.data[0].number)
-    console.log(this.state.number)
   }
 
   render() {
