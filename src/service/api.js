@@ -81,7 +81,7 @@ export async function getAverageSessions(id) {
     'http://localhost:3000/user/' + id + '/average-sessions'
   )
   const data = await res.json()
-  //console.log(data.data.sessions)
+
   return data.data.sessions
 }
 

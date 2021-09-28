@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { getFirstName } from '../service/api'
+
 
 const Title = styled.h1`
   font-family: Roboto;
@@ -16,20 +16,20 @@ const Title = styled.h1`
   }
 `
 
-export default class Welcome extends React.Component {
-  constructor(props) {
+export default function Welcome(props) {
+  /* constructor(props) {
     super(props)
     this.state = { name: '', id: this.props.id }
   }
 
   async componentDidMount() {
     this.setState({ name: await getFirstName(this.state.id) })
-  }
-  render() {
-    return (
-      <Title>
-        Bonjour <span id="name">{this.state.name}</span>
-      </Title>
-    )
-  }
+  } */
+
+  return (
+    <Title>
+      Bonjour <span id="name">{props.name}</span>
+    </Title>
+  )
 }
+

@@ -9,10 +9,10 @@ const Header = styled.div`
   flex-direction: column;
 `
 
-export default function BodyHeader() {
+export default function BodyHeader(props) {
   return (
     <Header>
-      <Welcome id={GetId()} />
+      <Welcome id={GetId()} name={props.name} />
       <Recap />
     </Header>
   )

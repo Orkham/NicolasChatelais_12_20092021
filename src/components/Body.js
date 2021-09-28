@@ -15,12 +15,13 @@ const Content = styled.section`
   width: 100%;
 `
 
-export default function Body() {
+export default function Body(props) {
+  //console.log(props)
   return (
     <StyledBody>
       <SideNav />
       <Content>
-        <BodyHeader id={GetId()} />
+        <BodyHeader id={GetId()} name={props.name} />
         <Dashboard id={GetId()} />
       </Content>
     </StyledBody>
