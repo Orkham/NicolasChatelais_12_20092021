@@ -3,7 +3,6 @@ import SideNav from './SideNav'
 import styled from 'styled-components'
 import BodyHeader from './BodyHeader'
 import Dashboard from './Dashboard'
-import { GetId } from '../service/api'
 
 const StyledBody = styled.section`
   display: flex;
@@ -15,14 +14,17 @@ const Content = styled.section`
   width: 100%;
 `
 
-export default function Body(props) {
-  //console.log(props)
+export default function Main(props) {
+  console.log(props)
+  if (props.isLoading) {
+    return <h1>Patientez</h1>
+  }
   return (
     <StyledBody>
       <SideNav />
       <Content>
-        <BodyHeader id={GetId()} name={props.name} />
-        <Dashboard id={GetId()} />
+        <BodyHeader name={props.userData.userInfos.firstName} />
+        <Dashboard /*keyData={props.keyData}*/ />
       </Content>
     </StyledBody>
   )

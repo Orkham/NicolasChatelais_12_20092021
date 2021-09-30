@@ -17,18 +17,10 @@ const Title = styled.h1`
 `
 
 export default function Welcome(props) {
-  /* constructor(props) {
-    super(props)
-    this.state = { name: '', id: this.props.id }
-  }
-
-  async componentDidMount() {
-    this.setState({ name: await getFirstName(this.state.id) })
-  } */
-
+  //console.log(props)
   return (
     <Title>
-      Bonjour <span id="name">{props.name}</span>
+      Bonjour <span id="name"> {props.name} </span>
     </Title>
   )
 }
