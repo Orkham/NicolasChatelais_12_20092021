@@ -1,14 +1,13 @@
 import React from 'react'
 import { PieChart, Pie, ResponsiveContainer, Legend } from 'recharts'
+import PropTypes from 'prop-types'
 
 const renderColorfulLegendText = () => {
   return <span style={{ color: '#20253A' }}>Score</span>
 }
 
 export default function ScorePieChart(props) {
-  //console.log(props)
   const data = [props.data[0]]
-  console.log(data)
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -89,3 +88,6 @@ export default function ScorePieChart(props) {
   )
 }
 
+ScorePieChart.propTypes = {
+  data: PropTypes.array,
+}

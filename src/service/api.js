@@ -20,9 +20,7 @@ export async function getKeyDatas(id) {
 
 export async function getTodayScore(id) {
   const score = await getUserInformations(id)
-  console.log(score)
   const result = [{ name: 'Score', value: score.todayScore * 100 }]
-  //console.log(result)
   return result
 }
 /**********************************************/

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import SessionsChart from '../Dashboards/Sessions'
+import PropTypes from 'prop-types'
 
 const StyledTable = styled.div`
   width: 258px;
@@ -13,4 +14,8 @@ export default function Sessions(props) {
       <SessionsChart data={props.data} />
     </StyledTable>
   )
+}
+
+Sessions.propTypes = {
+  data: PropTypes.array,
 }

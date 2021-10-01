@@ -2,6 +2,7 @@ import Welcome from './Welcome'
 import Recap from './Recap'
 import styled from 'styled-components'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Header = styled.div`
   display: flex;
@@ -9,7 +10,6 @@ const Header = styled.div`
 `
 
 export default function BodyHeader(props) {
-  //console.log(props)
   return (
     <Header>
       <Welcome name={props.name} />
@@ -18,3 +18,6 @@ export default function BodyHeader(props) {
   )
 }
 
+BodyHeader.propTypes = {
+  name: PropTypes.string,
+}

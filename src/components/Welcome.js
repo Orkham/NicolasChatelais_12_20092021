@@ -1,7 +1,6 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 
 const Title = styled.h1`
   font-family: Roboto;
@@ -17,11 +16,14 @@ const Title = styled.h1`
 `
 
 export default function Welcome(props) {
-  //console.log(props)
   return (
     <Title>
       Bonjour <span id="name"> {props.name} </span>
     </Title>
   )
+}
+
+Welcome.propTypes = {
+  name: PropTypes.string,
 }
 

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useEffect } from 'react/cjs/react.development'
 import Main from '../../src/components/Body'
+import PropTypes from 'prop-types'
+
 import {
   getAverageSessions,
   GetId,
@@ -8,23 +10,22 @@ import {
   getPerformance,
   getTodayScore,
   getUserActivity,
+  getUserInformations,
 } from '../service/api'
-import { getUserInformations } from '../service/api'
 
 export default function UserPage() {
   const id = GetId()
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState([])
-  const [keyData, setKeyData] = useState([])
+  const [keyData, setKeyData] = useState({})
   const [userActivity, setUserActivity] = useState([])
   const [averageSessions, setAverageSessions] = useState([])
   const [performance, setPerformance] = useState([])
-  const [todayScore, setTodayScore] = useState(0)
+  const [todayScore, setTodayScore] = useState([])
   useEffect(
     () => {
       const getData = async () => {
         await getUserInformations(id).then((res) => setData(res))
-        //.then(() => setIsLoading(false))
         await getKeyDatas(id).then((res) => setKeyData(res))
         await getUserActivity(id).then((res) => setUserActivity(res))
         await getAverageSessions(id).then((res) => setAverageSessions(res))
@@ -50,4 +51,14 @@ export default function UserPage() {
       todayScore={todayScore}
     />
   )
+}
+
+UserPage.propTypes = {
+  userData: PropTypes.object,
+  isLoading: PropTypes.bool,
+  keyData: PropTypes.object,
+  userActivity: PropTypes.array,
+  averageSessions: PropTypes.array,
+  performance: PropTypes.array,
+  todayScore: PropTypes.array,
 }

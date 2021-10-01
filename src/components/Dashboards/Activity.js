@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   BarChart,
   Bar,
@@ -9,7 +10,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-
 
 const renderColorfulLegendText = (value) => {
   return <span style={{ color: '#74798C', paddingLeft: '10px' }}>{value}</span>
@@ -49,6 +49,11 @@ export default function ActivityGraph(props) {
           orientation="right"
           axisLine={false}
           tickSize={0}
+          allowDecimals={false}
+          fontFamily="Roboto"
+          fontWeight="500"
+          fontSize="14px"
+          tickMargin={20}
         />
         <YAxis
           dataKey="calories"
@@ -120,3 +125,6 @@ export default function ActivityGraph(props) {
   )
 }
 
+ActivityGraph.propTypes = {
+  userActivity: PropTypes.array,
+}

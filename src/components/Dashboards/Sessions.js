@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
   YAxis,
 } from 'recharts'
-
+import PropTypes from 'prop-types'
 
 const renderTooltip = (value, label) => {
   label = 'min'
@@ -116,3 +116,6 @@ export default function SessionsChart(props) {
   )
 }
 
+SessionsChart.propTypes = {
+  data: PropTypes.array,
+}

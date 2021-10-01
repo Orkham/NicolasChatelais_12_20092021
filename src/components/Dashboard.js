@@ -9,7 +9,7 @@ import img2 from '../assets/nutritionIcons/protein-icon.png'
 import img3 from '../assets/nutritionIcons/carbs-icon.png'
 import img4 from '../assets/nutritionIcons/fat-icon.png'
 import React from 'react'
-
+import PropTypes from 'prop-types'
 
 const StyledContent = styled.div`
   display: flex;
@@ -36,7 +36,6 @@ const StyledNutritionBoard = styled.div`
 `
 
 export default function Dashboard(props) {
-  
   return (
     <StyledContent>
       <StyledDashboard>
@@ -77,3 +76,11 @@ export default function Dashboard(props) {
   )
 }
 
+Dashboard.propTypes = {
+  userData: PropTypes.object,
+  keyData: PropTypes.object,
+  userActivity: PropTypes.array,
+  averageSessions: PropTypes.array,
+  performance: PropTypes.array,
+  todayScore: PropTypes.array,
+}

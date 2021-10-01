@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import {
   Radar,
   RadarChart,
@@ -41,3 +43,6 @@ export default function HealthyRadar(props) {
   )
 }
 
+HealthyRadar.propTypes = {
+  data: PropTypes.array,
+}

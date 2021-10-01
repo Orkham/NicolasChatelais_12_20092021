@@ -48,7 +48,7 @@ function NutritionCard({ icon, data, category, unit }) {
   )
 }
 
-Card.propTypes = {
+NutritionCard.propTypes = {
   icon: PropTypes.string,
   data: PropTypes.number,
   category: PropTypes.string,
