@@ -24,7 +24,7 @@ export default function Main(props) {
       <SideNav />
       <Content>
         <BodyHeader name={props.userData.userInfos.firstName} />
-        <Dashboard /*keyData={props.keyData}*/ />
+        <Dashboard keyData={props.keyData} userActivity={props.userActivity} />
       </Content>
     </StyledBody>
   )

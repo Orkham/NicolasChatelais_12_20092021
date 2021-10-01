@@ -36,11 +36,11 @@ const StyledNutritionBoard = styled.div`
 `
 
 export default function Dashboard(props) {
-  //console.log(props.keyData)
+  console.log(props)
   return (
     <StyledContent>
       <StyledDashboard>
-        <Activity />
+        <Activity data={props.userActivity} />
         <StyledLittleBoard>
           <Sessions />
           <Radar />
@@ -50,25 +50,25 @@ export default function Dashboard(props) {
       <StyledNutritionBoard>
         <NutritionCard
           icon={img1}
-          //data={props.keyData.calorieCount}
+          data={props.keyData.calorieCount}
           unit="kCal"
           category="Calories"
         />
         <NutritionCard
           icon={img2}
-          //data={props.keyData.proteinCount}
+          data={props.keyData.proteinCount}
           unit="g"
           category="Proteines"
         />
         <NutritionCard
           icon={img3}
-          //data={props.keyData.carbohydrateCount}
+          data={props.keyData.carbohydrateCount}
           unit="g"
           category="Glucides"
         />
         <NutritionCard
           icon={img4}
-          //data={props.keyData.lipidCount}
+          data={props.keyData.lipidCount}
           unit="g"
           category="Lipides"
         />
