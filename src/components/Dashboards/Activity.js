@@ -21,14 +21,6 @@ const renderTooltip = (value, label) => {
 }
 
 export default function ActivityGraph(props) {
-  /* constructor(props) {
-    super(props)
-    this.state = { data: '', id: this.props.id }
-  }
-  async componentDidMount() {
-    this.setState({ data: await getUserActivity(this.state.id) })
-  } */
-  console.log(props.userActivity)
   return (
     <ResponsiveContainer>
       <BarChart

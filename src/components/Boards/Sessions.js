@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { GetId } from '../../service/api'
 import SessionsChart from '../Dashboards/Sessions'
 
 const StyledTable = styled.div`
@@ -8,10 +7,10 @@ const StyledTable = styled.div`
   height: 263px;
 `
 
-export default function Sessions() {
+export default function Sessions(props) {
   return (
     <StyledTable>
-      <SessionsChart id={GetId()} />
+      <SessionsChart data={props.data} />
     </StyledTable>
   )
 }

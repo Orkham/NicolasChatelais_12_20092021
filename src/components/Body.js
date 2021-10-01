@@ -15,7 +15,7 @@ const Content = styled.section`
 `
 
 export default function Main(props) {
-  console.log(props)
+  
   if (props.isLoading) {
     return <h1>Patientez</h1>
   }
@@ -24,7 +24,13 @@ export default function Main(props) {
       <SideNav />
       <Content>
         <BodyHeader name={props.userData.userInfos.firstName} />
-        <Dashboard keyData={props.keyData} userActivity={props.userActivity} />
+        <Dashboard
+          keyData={props.keyData}
+          userActivity={props.userActivity}
+          averageSessions={props.averageSessions}
+          performance={props.performance}
+          todayScore={props.todayScore}
+        />
       </Content>
     </StyledBody>
   )

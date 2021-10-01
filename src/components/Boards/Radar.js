@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import HealthyRadar from '../Dashboards/Radar'
-import { GetId } from '../../service/api'
 
 const StyledTable = styled.div`
   width: 258px;
@@ -8,10 +7,10 @@ const StyledTable = styled.div`
   height: 263px;
 `
 
-export default function Radar() {
+export default function Radar(props) {
   return (
     <StyledTable>
-      <HealthyRadar id={GetId()} />
+      <HealthyRadar data={props.data} />
     </StyledTable>
   )
 }

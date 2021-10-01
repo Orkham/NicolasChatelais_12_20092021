@@ -10,7 +10,6 @@ const TableWrapper = styled.div`
 `
 
 export default function Activity(props) {
-  //console.log(props.data)
   return (
     <TableWrapper>
       <ActivityGraph userActivity={props.data} />

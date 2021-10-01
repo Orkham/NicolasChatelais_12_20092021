@@ -36,15 +36,15 @@ const StyledNutritionBoard = styled.div`
 `
 
 export default function Dashboard(props) {
-  console.log(props)
+  
   return (
     <StyledContent>
       <StyledDashboard>
         <Activity data={props.userActivity} />
         <StyledLittleBoard>
-          <Sessions />
-          <Radar />
-          <KPI />
+          <Sessions data={props.averageSessions} />
+          <Radar data={props.performance} />
+          <KPI data={props.todayScore} />
         </StyledLittleBoard>
       </StyledDashboard>
       <StyledNutritionBoard>
