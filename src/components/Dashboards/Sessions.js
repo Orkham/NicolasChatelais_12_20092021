@@ -10,6 +10,11 @@ import {
 } from 'recharts'
 import PropTypes from 'prop-types'
 
+/**
+ * @param {integer} value 
+ * @param {string} label 
+ * @return le tooltip mis en forme
+ */
 const renderTooltip = (value, label) => {
   label = 'min'
   return [label, value]

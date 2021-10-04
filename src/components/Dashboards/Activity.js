@@ -11,10 +11,19 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+/**
+ * @param {string} value 
+ * @return la légende mise en forme
+ */
 const renderColorfulLegendText = (value) => {
   return <span style={{ color: '#74798C', paddingLeft: '10px' }}>{value}</span>
 }
 
+/**
+ * @param {integer} value 
+ * @param {string} label 
+ * @return le tooltip mis en forme
+ */
 const renderTooltip = (value, label) => {
   label = value > 150 ? 'kCal' : 'kg'
   return [label, value]

@@ -8,6 +8,12 @@ const StyledTable = styled.div`
   height: 263px;
 `
 
+/**
+ * Gestion des dimensions du tableau
+ * @param {props} props du graphique
+ * @returns render contenant le tableau à afficher
+ */
+
 export default function Radar(props) {
   return (
     <StyledTable>

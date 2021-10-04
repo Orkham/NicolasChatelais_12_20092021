@@ -9,6 +9,12 @@ const TableWrapper = styled.div`
   border-radius: 5px;
 `
 
+/**
+ * Gestion des dimensions du tableau
+ * @param {props} props du graphique
+ * @returns render contenant le tableau à afficher
+ */
+
 export default function Activity(props) {
   return (
     <TableWrapper>

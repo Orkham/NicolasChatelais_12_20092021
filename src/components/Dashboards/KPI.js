@@ -2,6 +2,10 @@ import React from 'react'
 import { PieChart, Pie, ResponsiveContainer, Legend } from 'recharts'
 import PropTypes from 'prop-types'
 
+
+/**
+ * @return la légende mise en forme
+ */
 const renderColorfulLegendText = () => {
   return <span style={{ color: '#20253A' }}>Score</span>
 }

@@ -7,6 +7,11 @@ const StyledTable = styled.div`
   margin-top: 77px;
   height: 263px;
 `
+/**
+ * Gestion des dimensions du tableau
+ * @param {props} props du graphique
+ * @returns render contenant le tableau à afficher
+ */
 
 export default function KPI(props) {
   return (
