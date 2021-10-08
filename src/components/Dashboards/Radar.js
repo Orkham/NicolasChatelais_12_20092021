@@ -32,7 +32,6 @@ export default function HealthyRadar(props) {
 
         <PolarRadiusAxis axisLine={false} tick={false} />
         <Radar
-          name="Mike"
           dataKey="value"
           stroke="#FF0101B2"
           fill="#FF0101B2"

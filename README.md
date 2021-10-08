@@ -46,11 +46,7 @@ Launch back-end :
 
 # Install and launch front-end
 
-Move back to main repository
-
-`cd ..`
-
-Then install dependencies:
+In the main directory (sportsee), install dependencies:
 
 `npm install`
 

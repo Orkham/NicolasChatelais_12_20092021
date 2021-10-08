@@ -1,20 +1,27 @@
 import { useParams } from 'react-router'
+import {
+  PerformanceData,
+  SessionData,
+  UserActivityDatas,
+  UserInformations,
+} from './models'
 
 /**
- * 
- * @param {integer} id 
- * @return {array} les datas de la bdd en fonction de l'id passé en paramètre
+ *
+ * @param {integer} id
+ * @return {object} UserInformations type. database data from id in param
  */
 export async function getUserInformations(id) {
-  //récupération des données auprès de l'api exécuté sur le port :3000
+  //datas fetch from api on localhost:3000 port
   const res = await fetch('http://localhost:3000/user/' + id)
   const data = await res.json()
-  return data.data
+  const userInformation = new UserInformations(data.data)
+  return userInformation
 }
 
 /**
- * @param {integer} id 
- * @return {string} le prénom correspondant à l'id de l'user passé en paramètre
+ * @param {integer} id
+ * @return {string}  first name from user informations
  */
 export async function getFirstName(id) {
   const data = await getUserInformations(id)
@@ -22,8 +29,8 @@ export async function getFirstName(id) {
 }
 
 /**
- * @param {integer} id 
- * @return {array} les données 'key' permettant de récupérer les infos user
+ * @param {integer} id
+ * @return {array} user key datas
  */
 export async function getKeyDatas(id) {
   const data = await getUserInformations(id)
@@ -31,8 +38,8 @@ export async function getKeyDatas(id) {
 }
 
 /**
- * @param {integer} id 
- * @return {array} le 'todayScore' pour l'affichage du graphique KPI (objectif)
+ * @param {integer} id
+ * @return {array} today score allowing to draw the KPI graphic
  */
 export async function getTodayScore(id) {
   const score = await getUserInformations(id)
@@ -42,22 +49,24 @@ export async function getTodayScore(id) {
 /**********************************************/
 
 /**
- * @param {integer} id 
- * @return {array} les données d'activités quotidiennes de l'user classées du lundi au dimanche
+ * @param {integer} id
+ * @return {array} daily user activities sort from monday to sunday
  */
 export async function getUserActivity(id) {
-  //récupération des données auprès de l'api exécuté sur le port :3000
+  //datas fetch from api on localhost:3000 port
   const res = await fetch('http://localhost:3000/user/' + id + '/activity')
   const data = await res.json()
   const result = data.data.sessions
-  //tri des données par date
-  result.sort((a, b) => {
+  const UserActivity = result.map((data) => new UserActivityDatas(data))
+
+  //datas sort by date
+  UserActivity.sort((a, b) => {
     let dateA = new Date(a.day)
     let dateB = new Date(b.day)
     return dateA.getUTCDay() - dateB.getUTCDay()
   })
-  //récupération du jour de la semaine et mise en forme
-  result.map((day) => {
+  //get the day name by number
+  UserActivity.map((day) => {
     const date = new Date(day.day)
     const dayNumber = date.getUTCDay()
     switch (dayNumber) {
@@ -91,37 +100,41 @@ export async function getUserActivity(id) {
     return dayNumber
   })
 
-  return result
+  return UserActivity
 }
 
 /*******************************************/
 
 /**
- * @param {integer} id 
- * @return {array} données de l'user sur la durée moyenne des sessions
+ * @param {integer} id
+ * @return {array} user datas about sessions durations
  */
 export async function getAverageSessions(id) {
-  //récupération des données auprès de l'api exécuté sur le port :3000
+  ////datas fetch from api on localhost:3000 port
   const res = await fetch(
     'http://localhost:3000/user/' + id + '/average-sessions'
   )
   const data = await res.json()
-
-  return data.data.sessions
+  const userSessionInformations = data.data.sessions.map(
+    (data) => new SessionData(data)
+  )
+  return userSessionInformations
 }
 
 /*************************************/
 
 /**
- * @param {integer} id 
- * @return {array} données de l'user sur les performances classées par thématiques
+ * @param {integer} id
+ * @return {array} user datas about performances sort par theme
  */
 export async function getPerformance(id) {
-  //récupération des données auprès de l'api exécuté sur le port :3000
+  //datas fetch from api on localhost:3000 port
   const res = await fetch('http://localhost:3000/user/' + id + '/performance')
   const data = await res.json()
   const result = data.data.data
-  result.map((kind) => {
+  const performanceDatas = result.map((data) => new PerformanceData(data))
+
+  performanceDatas.map((kind) => {
     switch (kind.kind) {
       case 1:
         kind.kind = 'Intensité'
@@ -148,12 +161,12 @@ export async function getPerformance(id) {
     }
     return kind.kind
   })
-  return result
+  return performanceDatas
 }
 
 /********************************************/
 /**
- * @return {integer} id passé dans l'url (react-router)
+ * @return {integer} id from url (react-router)
  */
 export function GetId() {
   let { id } = useParams()
