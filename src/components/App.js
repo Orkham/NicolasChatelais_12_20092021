@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import UserPage from '../pages/UserPage'
 import Header from './Header'
 import { Route, Switch } from 'react-router'
-
+import ErrorPage from '../pages/ErrorPage'
 
 function App() {
   return (
@@ -12,6 +12,9 @@ function App() {
       <Switch>
         <Route path="/:id">
           <UserPage />
+        </Route>
+        <Route>
+          <ErrorPage />
         </Route>
       </Switch>
     </BrowserRouter>

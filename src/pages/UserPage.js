@@ -28,6 +28,7 @@ export default function UserPage() {
   const [performance, setPerformance] = useState([])
   const [todayScore, setTodayScore] = useState([])
   //déclenchement de la récupération des données au chargement initial de la page
+
   useEffect(
     () => {
       const getData = async () => {

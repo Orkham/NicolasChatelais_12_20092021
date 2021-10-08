@@ -58,7 +58,7 @@ Launch front-end on port 3001, automatically displayed on your default browser a
 
 `npm run start`
 
-## Examples routes
+## Example routes
 
 - Only 2 users are available in the micro-API, access their respective dashboard using the URLs
     - [localhost:3001/12](https://localhost:3001/12)
