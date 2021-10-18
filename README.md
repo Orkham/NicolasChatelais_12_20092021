@@ -42,7 +42,7 @@ Then install dependencies:
 
 Launch back-end :
 
-`npm run start`
+`npm start`
 
 # Install and launch front-end
 
@@ -52,7 +52,7 @@ In the main directory (sportsee), install dependencies:
 
 Launch front-end on port 3001, automatically displayed on your default browser at `http://localhost:3001/`:
 
-`npm run start`
+`npm start`
 
 ## Example routes
 
